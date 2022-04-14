@@ -20,11 +20,11 @@ Route::get('/', function () {
 
 Route::get('/tareas', function () {
     $tareas = DB::table('tareas')->get();
-    return view('tareas.formTareas',compact('tareas'));
+    return view('tareas.indexTareas',compact('tareas'));
 });
 
 Route::get('/tareas/create', function () {
-    return view('tareas.indexTareas');
+    return view('tareas.formTareas');
 });
 
 Route::get('/hola-mundo', function () {
