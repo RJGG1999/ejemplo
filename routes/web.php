@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\TareaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,22 +18,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tareas', function () {
-    $tareas = DB::table('tareas')->get();
-    return view('tareas.indexTareas',compact('tareas'));
-});
+//Forma automatica de generar rutas
+Route::resource('/tarea',TareaController::class);
 
-Route::get('/tareas/create', function () {
-    return view('tareas.formTareas');
-});
+//Forma manual de generar rutas
+//Route::get('/tarea', [TareaController::class, 'index']);
+//Route::get('/tarea/create', [TareaController::class, 'create']);
+//Route::post('/tarea/store', [TareaController::class, 'store']);
 
+//------------------------------------------------Ejemplos--------------------------------------------
 Route::get('/hola-mundo', function () {
     return view('paginas/hola-mundo');
 });
 
 Route::get('/grabaciones/{nombre}/{aa?}/{cantidad?}', function ($nombre, $aa = null, $cantidad = 10) {
-    //dd($nombre); 
-    
+    //dd($nombre);
+
     //Formas de pasar variables
     //$otra = 'mi otra variable';
 
